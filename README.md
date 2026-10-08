@@ -14,6 +14,10 @@ Proyecto académico que modela la administración de servicios de atención méd
 - `diagramas/diagrama-clases-medihome.puml`: fuente textual de respaldo del mismo modelo UML.
 - `src/main/java/co/edu/medihome/`: clases Java del dominio y clase `Main`.
 
+## Diagrama de clases
+
+![Diagrama de clases de MEDIHOME](diagramas/diagrama-clases-medihome.png)
+
 ## Modelo implementado
 
 - `Usuario` es la superclase abstracta de `Paciente` y `ProfesionalSalud`.

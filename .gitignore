@@ -1,5 +1,6 @@
 out/
 work/
+outputs/
 *.class
 *.log
 .idea/

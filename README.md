@@ -4,7 +4,7 @@ Proyecto académico que modela la administración de servicios de atención méd
 
 ## Participantes
 
-- **Participante:** Santiago Tulcan
+- **Participante:** Josue David Guerrero - Santiago Tulcan
 
 ## Contenido
 

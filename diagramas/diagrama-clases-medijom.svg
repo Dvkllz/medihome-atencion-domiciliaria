@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+  <defs>
+    <style>
+      .box { fill:#79c8ee; stroke:#1b2a34; stroke-width:2; }
+      .sep { stroke:#1b2a34; stroke-width:1.5; }
+      .rel { fill:none; stroke:#202a30; stroke-width:2; }
+      .dash { stroke-dasharray:8 6; }
+      .title { font:700 18px Arial,sans-serif; text-anchor:middle; fill:#10202a; }
+      .stereo { font:italic 14px Arial,sans-serif; text-anchor:middle; fill:#10202a; }
+      .member { font:14px Consolas,'Courier New',monospace; fill:#10202a; }
+      .label { font:14px Arial,sans-serif; fill:#10202a; paint-order:stroke; stroke:#fff; stroke-width:4; stroke-linejoin:round; }
+      .caption { font:700 28px Arial,sans-serif; fill:#163447; }
+    </style>
+    <marker id="triangle" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto">
+      <path d="M1,1 L13,7 L1,13 Z" fill="#fff" stroke="#202a30" stroke-width="1.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="16" markerHeight="12" refX="15" refY="6" orient="auto">
+      <path d="M1,6 L7,1 L15,6 L7,11 Z" fill="#fff" stroke="#202a30" stroke-width="1.5"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="16" markerHeight="12" refX="15" refY="6" orient="auto">
+      <path d="M1,6 L7,1 L15,6 L7,11 Z" fill="#202a30" stroke="#202a30" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="1100" fill="#fff"/>
+  <text x="60" y="50" class="caption">MEDIJOM — Diagrama de clases</text>
+
+  <!-- Relaciones detrás de las clases -->
+  <path class="rel dash" d="M490 160 L650 160" marker-end="url(#triangle)"/>
+  <path class="rel" d="M430 350 L700 250" marker-end="url(#triangle)"/>
+  <path class="rel" d="M1170 350 L900 250" marker-end="url(#triangle)"/>
+  <path class="rel" d="M430 550 L690 620"/>
+  <path class="rel" d="M1170 570 L910 620"/>
+  <path class="rel" d="M80 725 L40 725 L40 320 L1030 320 L1030 460 L1050 460" marker-start="url(#diamond-open)"/>
+  <path class="rel" d="M990 720 L1070 720" marker-start="url(#diamond-filled)"/>
+  <path class="rel" d="M1280 830 L1280 900" marker-start="url(#diamond-filled)"/>
+
+  <!-- Notificable -->
+  <g>
+    <rect class="box" x="170" y="95" width="320" height="130"/>
+    <line class="sep" x1="170" y1="160" x2="490" y2="160"/>
+    <text class="stereo" x="330" y="122">«interface»</text>
+    <text class="title" x="330" y="148">Notificable</text>
+    <text class="member" x="185" y="190">+notificar(mensaje: String): void</text>
+  </g>
+
+  <!-- Usuario -->
+  <g>
+    <rect class="box" x="650" y="80" width="300" height="170"/>
+    <line class="sep" x1="650" y1="140" x2="950" y2="140"/>
+    <line class="sep" x1="650" y1="210" x2="950" y2="210"/>
+    <text class="stereo" x="800" y="105">«abstract»</text>
+    <text class="title" x="800" y="132">Usuario</text>
+    <text class="member" x="665" y="165">-identificacion: String</text>
+    <text class="member" x="665" y="185">-nombre: String</text>
+    <text class="member" x="665" y="205">-correo: String</text>
+    <text class="member" x="665" y="237">+notificar(mensaje: String): void</text>
+  </g>
+
+  <!-- EstadoServicio -->
+  <g>
+    <rect class="box" x="1190" y="80" width="300" height="200"/>
+    <line class="sep" x1="1190" y1="140" x2="1490" y2="140"/>
+    <text class="stereo" x="1340" y="105">«enumeration»</text>
+    <text class="title" x="1340" y="132">EstadoServicio</text>
+    <text class="member" x="1210" y="166">SOLICITADO</text>
+    <text class="member" x="1210" y="188">PROGRAMADO</text>
+    <text class="member" x="1210" y="210">EN_ATENCION</text>
+    <text class="member" x="1210" y="232">FINALIZADO</text>
+    <text class="member" x="1210" y="254">CANCELADO</text>
+  </g>
+
+  <!-- Paciente -->
+  <g transform="translate(0,-40)">
+    <rect class="box" x="120" y="390" width="430" height="200"/>
+    <line class="sep" x1="120" y1="435" x2="550" y2="435"/>
+    <line class="sep" x1="120" y1="515" x2="550" y2="515"/>
+    <text class="title" x="335" y="420">Paciente</text>
+    <text class="member" x="135" y="462">-telefono: String</text>
+    <text class="member" x="135" y="484">-direccionPrincipal: String</text>
+    <text class="member" x="135" y="506">-servicios: List&lt;ServicioDomiciliario&gt;</text>
+    <text class="member" x="135" y="545">+solicitarServicio(...): ServicioDomiciliario</text>
+    <text class="member" x="135" y="567">+notificar(mensaje: String): void</text>
+  </g>
+
+  <!-- ProfesionalSalud -->
+  <g transform="translate(0,-40)">
+    <rect class="box" x="1050" y="390" width="430" height="220"/>
+    <line class="sep" x1="1050" y1="435" x2="1480" y2="435"/>
+    <line class="sep" x1="1050" y1="535" x2="1480" y2="535"/>
+    <text class="title" x="1265" y="420">ProfesionalSalud</text>
+    <text class="member" x="1065" y="460">-numeroRegistroProfesional: String</text>
+    <text class="member" x="1065" y="482">-especialidad: String</text>
+    <text class="member" x="1065" y="504">-equipo: EquipoAtencion [0..1]</text>
+    <text class="member" x="1065" y="526">-serviciosAsignados: List&lt;ServicioDomiciliario&gt;</text>
+    <text class="member" x="1065" y="565">+estaDisponible(fecha: LocalDateTime): boolean</text>
+    <text class="member" x="1065" y="587">+notificar(mensaje: String): void</text>
+  </g>
+
+  <!-- EquipoAtencion -->
+  <g>
+    <rect class="box" x="80" y="690" width="410" height="230"/>
+    <line class="sep" x1="80" y1="735" x2="490" y2="735"/>
+    <line class="sep" x1="80" y1="830" x2="490" y2="830"/>
+    <text class="title" x="285" y="720">EquipoAtencion</text>
+    <text class="member" x="95" y="762">-codigo: String</text>
+    <text class="member" x="95" y="784">-nombre: String</text>
+    <text class="member" x="95" y="806">-zonaCobertura: String</text>
+    <text class="member" x="95" y="828">-profesionales: List&lt;ProfesionalSalud&gt;</text>
+    <text class="member" x="95" y="862">+agregarProfesional(p): void</text>
+    <text class="member" x="95" y="886">+retirarProfesional(p): void</text>
+  </g>
+
+  <!-- ServicioDomiciliario -->
+  <g>
+    <rect class="box" x="560" y="610" width="430" height="350"/>
+    <line class="sep" x1="560" y1="655" x2="990" y2="655"/>
+    <line class="sep" x1="560" y1="825" x2="990" y2="825"/>
+    <text class="title" x="775" y="640">ServicioDomiciliario</text>
+    <text class="member" x="575" y="682">-codigo: String</text>
+    <text class="member" x="575" y="704">-fechaProgramada: LocalDateTime</text>
+    <text class="member" x="575" y="726">-direccionAtencion: String</text>
+    <text class="member" x="575" y="748">-motivo: String</text>
+    <text class="member" x="575" y="770">-estado: EstadoServicio</text>
+    <text class="member" x="575" y="792">-paciente: Paciente</text>
+    <text class="member" x="575" y="814">-profesional: ProfesionalSalud [0..1]</text>
+    <text class="member" x="575" y="852">-atencion: AtencionMedica [0..1]</text>
+    <text class="member" x="575" y="878">+programar(fecha, profesional): void</text>
+    <text class="member" x="575" y="900">+iniciarAtencion(fecha): AtencionMedica</text>
+    <text class="member" x="575" y="922">+finalizar(...): void</text>
+    <text class="member" x="575" y="944">+cancelar(): void</text>
+  </g>
+
+  <!-- AtencionMedica -->
+  <g>
+    <rect class="box" x="1070" y="650" width="430" height="230"/>
+    <line class="sep" x1="1070" y1="695" x2="1500" y2="695"/>
+    <line class="sep" x1="1070" y1="810" x2="1500" y2="810"/>
+    <text class="title" x="1285" y="680">AtencionMedica</text>
+    <text class="member" x="1085" y="722">-fechaHoraInicio: LocalDateTime</text>
+    <text class="member" x="1085" y="744">-fechaHoraFin: LocalDateTime</text>
+    <text class="member" x="1085" y="766">-observaciones: String</text>
+    <text class="member" x="1085" y="788">-recomendaciones: String</text>
+    <text class="member" x="1085" y="808">-mediciones: List&lt;MedicionSignosVitales&gt;</text>
+    <text class="member" x="1085" y="842">+registrarMedicion(...): MedicionSignosVitales</text>
+    <text class="member" x="1085" y="866">+finalizar(...): void</text>
+  </g>
+
+  <!-- MedicionSignosVitales -->
+  <g>
+    <rect class="box" x="1070" y="900" width="430" height="185"/>
+    <line class="sep" x1="1070" y1="945" x2="1500" y2="945"/>
+    <text class="title" x="1285" y="930">MedicionSignosVitales</text>
+    <text class="member" x="1085" y="970">-fechaHora: LocalDateTime</text>
+    <text class="member" x="1085" y="992">-temperatura: double</text>
+    <text class="member" x="1085" y="1014">-frecuenciaCardiaca: int</text>
+    <text class="member" x="1085" y="1036">-presionSistolica: int</text>
+    <text class="member" x="1085" y="1058">-presionDiastolica: int</text>
+    <text class="member" x="1085" y="1080">-saturacionOxigeno: double</text>
+  </g>
+
+  <!-- Etiquetas de relaciones -->
+  <text class="label" x="480" y="585">solicita [1 — 0..*]</text>
+  <text class="label" x="985" y="585">atiende [0..* — 0..1]</text>
+  <text class="label" x="55" y="345">agrupa [0..1 — 0..*]</text>
+  <text class="label" x="995" y="708">genera [1 — 0..1]</text>
+  <text class="label" x="1295" y="895">contiene [1 — 0..*]</text>
+</svg>

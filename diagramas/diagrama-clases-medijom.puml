@@ -1,0 +1,95 @@
+@startuml
+title MEDIJOM - Atención médica domiciliaria
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+interface Notificable {
+  +notificar(mensaje: String): void
+}
+
+abstract class Usuario {
+  -identificacion: String
+  -nombre: String
+  -correo: String
+  +Usuario(identificacion: String, nombre: String, correo: String)
+  +notificar(mensaje: String): void
+}
+
+class Paciente {
+  -telefono: String
+  -direccionPrincipal: String
+  -servicios: List<ServicioDomiciliario>
+  +solicitarServicio(codigo: String, fecha: LocalDateTime, direccion: String, motivo: String): ServicioDomiciliario
+}
+
+class ProfesionalSalud {
+  -numeroRegistroProfesional: String
+  -especialidad: String
+  -equipo: EquipoAtencion
+  -serviciosAsignados: List<ServicioDomiciliario>
+  +estaDisponible(fecha: LocalDateTime): boolean
+}
+
+class EquipoAtencion {
+  -codigo: String
+  -nombre: String
+  -zonaCobertura: String
+  -profesionales: List<ProfesionalSalud>
+  +agregarProfesional(profesional: ProfesionalSalud): void
+  +retirarProfesional(profesional: ProfesionalSalud): void
+}
+
+class ServicioDomiciliario {
+  -codigo: String
+  -fechaProgramada: LocalDateTime
+  -direccionAtencion: String
+  -motivo: String
+  -estado: EstadoServicio
+  -paciente: Paciente
+  -profesional: ProfesionalSalud
+  -atencion: AtencionMedica
+  +programar(fecha: LocalDateTime, profesional: ProfesionalSalud): void
+  +iniciarAtencion(fechaHoraInicio: LocalDateTime): AtencionMedica
+  +finalizar(fechaHoraFin: LocalDateTime, observaciones: String, recomendaciones: String): void
+  +cancelar(): void
+  +generarReporte(): String
+}
+
+enum EstadoServicio {
+  SOLICITADO
+  PROGRAMADO
+  EN_ATENCION
+  FINALIZADO
+  CANCELADO
+}
+
+class AtencionMedica {
+  -fechaHoraInicio: LocalDateTime
+  -fechaHoraFin: LocalDateTime
+  -observaciones: String
+  -recomendaciones: String
+  -mediciones: List<MedicionSignosVitales>
+  +registrarMedicion(fechaHora: LocalDateTime, temperatura: double, frecuenciaCardiaca: int, presionSistolica: int, presionDiastolica: int, saturacionOxigeno: double): MedicionSignosVitales
+  +finalizar(fechaHoraFin: LocalDateTime, observaciones: String, recomendaciones: String): void
+}
+
+class MedicionSignosVitales {
+  -fechaHora: LocalDateTime
+  -temperatura: double
+  -frecuenciaCardiaca: int
+  -presionSistolica: int
+  -presionDiastolica: int
+  -saturacionOxigeno: double
+}
+
+Usuario ..|> Notificable
+Paciente --|> Usuario
+ProfesionalSalud --|> Usuario
+EquipoAtencion "0..1" o-- "0..*" ProfesionalSalud : agrupa
+Paciente "1" -- "0..*" ServicioDomiciliario : solicita
+ProfesionalSalud "0..1" -- "0..*" ServicioDomiciliario : atiende
+ServicioDomiciliario --> EstadoServicio
+ServicioDomiciliario "1" *-- "0..1" AtencionMedica : genera
+AtencionMedica "1" *-- "0..*" MedicionSignosVitales : contiene
+@enduml
+

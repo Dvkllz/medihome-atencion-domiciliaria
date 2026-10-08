@@ -1,0 +1,7 @@
+out/
+work/
+*.class
+*.log
+.idea/
+.vscode/
+

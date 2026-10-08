@@ -1,6 +1,6 @@
-# MEDIJOM — Atención médica domiciliaria
+# MEDIHOME — Atención médica domiciliaria
 
-Proyecto académico que modela la administración de servicios de atención médica domiciliaria de MEDIJOM. Incluye el diagrama de clases, su fuente editable y una implementación en Java con un escenario demostrativo completo.
+Proyecto académico que modela la administración de servicios de atención médica domiciliaria de MEDIHOME. Incluye el diagrama de clases, su fuente editable y una implementación en Java con un escenario demostrativo completo.
 
 ## Participantes
 
@@ -9,10 +9,10 @@ Proyecto académico que modela la administración de servicios de atención méd
 
 ## Contenido
 
-- `diagramas/diagrama-clases-medijom.png`: imagen final del diagrama de clases.
-- `diagramas/diagrama-clases-medijom.svg`: fuente vectorial editable del diagrama construido en Visual Paradigm Online.
-- `diagramas/diagrama-clases-medijom.puml`: fuente textual de respaldo del mismo modelo UML.
-- `src/main/java/co/edu/medijom/`: clases Java del dominio y clase `Main`.
+- `diagramas/diagrama-clases-medihome.png`: imagen final del diagrama de clases.
+- `diagramas/diagrama-clases-medihome.svg`: fuente vectorial editable del diagrama construido en Visual Paradigm Online.
+- `diagramas/diagrama-clases-medihome.puml`: fuente textual de respaldo del mismo modelo UML.
+- `src/main/java/co/edu/medihome/`: clases Java del dominio y clase `Main`.
 
 ## Modelo implementado
 
@@ -35,7 +35,7 @@ Desde la raíz del repositorio, en PowerShell:
 ```powershell
 New-Item -ItemType Directory -Force out | Out-Null
 javac -encoding UTF-8 -d out (Get-ChildItem -Recurse src/main/java -Filter *.java).FullName
-java -cp out co.edu.medijom.Main
+java -cp out co.edu.medihome.Main
 ```
 
 La ejecución crea un paciente, un profesional, un equipo, un servicio domiciliario, una atención médica y una medición de signos vitales. Finalmente imprime el reporte de la atención prestada.

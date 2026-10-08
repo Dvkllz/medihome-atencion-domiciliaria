@@ -1,4 +1,4 @@
-package co.edu.medijom;
+package co.edu.medihome;
 
 import java.time.LocalDateTime;
 
@@ -17,7 +17,7 @@ public final class Main {
         ProfesionalSalud profesional = new ProfesionalSalud(
                 "80123456",
                 "Dr. Carlos Ramírez",
-                "carlos.ramirez@medijom.com",
+                "carlos.ramirez@medihome.com",
                 "RM-45821",
                 "Medicina general");
 

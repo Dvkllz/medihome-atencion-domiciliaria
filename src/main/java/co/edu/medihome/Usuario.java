@@ -1,4 +1,4 @@
-package co.edu.medijom;
+package co.edu.medihome;
 
 import java.util.Objects;
 

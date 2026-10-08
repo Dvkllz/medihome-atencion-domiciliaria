@@ -1,4 +1,4 @@
-package co.edu.medijom;
+package co.edu.medihome;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -92,7 +92,7 @@ public final class ServicioDomiciliario {
 
         StringBuilder reporte = new StringBuilder();
         reporte.append("\n============================================================\n")
-                .append("        REPORTE DE ATENCIÓN DOMICILIARIA - MEDIJOM\n")
+                .append("        REPORTE DE ATENCIÓN DOMICILIARIA - MEDIHOME\n")
                 .append("============================================================\n")
                 .append("Servicio: ").append(codigo).append('\n')
                 .append("Estado: ").append(estado).append('\n')

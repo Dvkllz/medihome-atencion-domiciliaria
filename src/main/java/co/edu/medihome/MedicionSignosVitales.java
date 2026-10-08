@@ -1,4 +1,4 @@
-package co.edu.medijom;
+package co.edu.medihome;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
